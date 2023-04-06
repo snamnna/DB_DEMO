@@ -11,6 +11,16 @@ app.use(express.json());
 app.use(express.urlencoded({extended:false}));
 
 /**
+ * Routes
+ */
+app.get('/', (req, res) => {
+    res.status(200).send("This is not why you're Headers. Head to /user/:id and replace :id with user id")
+})
+
+const userRouter = require('./routes/user');
+app.use('/user', userRouter);
+
+/**
  * Start listening
  */
 app.listen(PORT, () => {
